@@ -1,0 +1,81 @@
+{
+  "name": "@bgm38/wiki",
+  "version": "0.3.3",
+  "description": "bangumi wiki syntax parser",
+  "type": "module",
+  "browser": "./dist/browser.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-jsdoc"
+    ],
+    "tsdoc": true,
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "all"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "format": "prettier -w ./",
+    "build": "node ./esbuild.js && tsc -p tsconfig.build.json",
+    "test": "vitest --run",
+    "prepack": "pnpm run build",
+    "lint": "eslint ./src",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "lint-staged": {
+    "*.{md,cjs,mjs,js,jsx,ts,tsx,json,yml,yaml}": [
+      "prettier --ignore-path ./.prettierignore --write"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  },
+  "files": [
+    "./package.json",
+    "./dist",
+    "./src"
+  ],
+  "repository": "bangumi/wiki-parser",
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/bangumi/wiki-parser",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.13.3",
+    "@vitest/coverage-v8": "^5.0.1",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^18.2.2",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "eslint-plugin-tsdoc": "^0.5.2",
+    "eslint-plugin-unicorn": "^76.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "husky": "^9.1.7",
+    "js-yaml": "^5.4.2",
+    "lint-staged": "^17.1.0",
+    "prettier": "^3.9.5",
+    "prettier-plugin-jsdoc": "^1.8.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.64.0",
+    "vitest": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

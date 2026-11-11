@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "labels": ["ci:auto-merge", "dependencies"],
+  "prConcurrentLimit": 3,
+  "extends": [
+    "github>Trim21/renovate-config",
+    "github>Trim21/renovate-config:js",
+    "github>Trim21/renovate-config:monthly"
+  ],
+  "rangeStrategy": "bump",
+  "lockFileMaintenance": {
+    "automerge": true
+  }
+}
